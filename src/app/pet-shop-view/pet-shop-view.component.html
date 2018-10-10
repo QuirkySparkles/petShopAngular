@@ -1,0 +1,65 @@
+<div class="navbar">
+    <div 
+        (click)="switchShowMode(true)"
+        [ngClass]="{'active-bar': isAllShown}"
+    >
+        All pets
+    </div>
+    <div
+        (click)="switchShowMode(false)"
+        [ngClass]="{'active-bar': !isAllShown}"
+    >
+        Popular filters
+    </div>
+</div>
+<div class="pets">
+    <button (click)="switchModal()">Add pet</button>
+    <add-pet-modal
+        [isModalShown]="isModalShown"
+        (shutModalRequest)="switchModal()"
+        (showNewPet)="onPetAddition($event)"
+    >
+    </add-pet-modal>
+    <div *ngIf="isAllShown" class="all-mode">
+        <p>All pets</p>
+        <hr>
+        <p *ngFor="let pet of allPets">
+            <span>{{pet.color}} {{pet.type}} {{pet.name}} that costs {{pet.price}}$.
+                <span *ngIf="pet.isFluffy">Fluffy!</span>
+                <span *ngIf="pet.isFluffy !== undefined && !pet.isFluffy">Not fluffy :&#40;</span>
+            </span>
+        </p>
+    </div>
+    <br>
+    <div *ngIf="!isAllShown" class="popular-mode">
+        <div class="shop-category">
+            <p>All cats</p>
+            <hr>
+            <p *ngFor="let cat of cats">
+                <span>{{cat.color}} {{cat.type}} {{cat.name}} that costs {{cat.price}}$.
+                    <span *ngIf="cat.isFluffy">Fluffy!</span>
+                    <span *ngIf="!cat.isFluffy">Not fluffy :&#40;</span>
+                </span>
+            </p>
+        </div>
+        <div class="shop-category">
+            <p>Expensive pets</p>
+            <hr>
+            <p *ngFor="let expensivePet of expensive">
+                <span>{{expensivePet.color}} {{expensivePet.type}} {{expensivePet.name}} that costs {{expensivePet.price}}$.
+                    <span *ngIf="expensivePet.isFluffy">Fluffy!</span>
+                    <span *ngIf="expensivePet.isFluffy !== undefined && !expensivePet.isFluffy">Not fluffy :&#40;</span>
+                </span>
+            </p>
+        </div>
+        <div class="shop-category">
+            <p>White and fluffy pets</p>
+            <hr>
+            <p *ngFor="let fluffyWhite of whiteAndFluffy">
+                <span>{{fluffyWhite.color}} {{fluffyWhite.type}} {{fluffyWhite.name}} that costs {{fluffyWhite.price}}$.
+                    <span *ngIf="fluffyWhite.isFluffy">Fluffy!</span>
+                </span>
+            </p>
+        </div>
+    </div>    
+</div>

@@ -1,0 +1,69 @@
+<div *ngIf="isModalShown" class="add-modal">
+    <div class="modal-content">
+        <p>Add new pet</p>
+        <form #petForm="ngForm" (ngSubmit)="processSubmit()">
+            <label for="type">Type:</label>
+            <select
+                id="type"
+                #petType
+                required
+                (change)="changeModal($event.target.value)"
+                [(ngModel)]="model.type"
+                name="type"
+            >
+                <option *ngFor="let type of petTypes" [value]="type">
+                    {{type}}
+                </option>
+            </select>
+            <br>
+            <label for="color">Color:</label>
+            <select
+                id="color"
+                #petColor
+                required
+                [(ngModel)]="model.color"
+                name="color"
+            >
+                <option *ngFor="let color of petColors" [value]="color">
+                    {{color}}
+                </option>
+            </select>
+            <br>
+            <label for="price">Price:</label>
+            <input
+                id="price"
+                type="number"
+                #petPrice
+                required
+                [(ngModel)]="model.price"
+                name="price"
+                placeholder="15"
+            />
+            <br>
+            <div class="name-section" [hidden]="chosenPet === 'Hamster'">
+                <label for="name">Name:</label>
+                <input
+                    id="name"
+                    type="text"
+                    #petName
+                    [required]="model.type === 'Cat' || model.type === 'Dog'"
+                    [(ngModel)]="model.name"
+                    name="name"
+                    placeholder="Cute"
+                />
+            </div>
+            <div class="fluffy-section" [hidden]="chosenPet === 'Dog'">
+                <label for="fluffy">Fluffy:</label>
+                <input
+                    id="fluffy"
+                    type="checkbox"
+                    #petFluffy
+                    [(ngModel)]="model.isFluffy"
+                    name="fluffy"
+                />
+            </div>
+            <button type="submit" [disabled]="!petForm.form.valid">Submit</button>
+            <button (click)="shutModal()">Cancel</button>
+        </form>
+    </div>
+</div>    

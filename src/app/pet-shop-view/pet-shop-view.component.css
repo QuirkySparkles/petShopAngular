@@ -1,0 +1,63 @@
+p {
+    font-size: 14px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #c4daff;
+    margin-bottom: 10px;
+}
+
+.navbar > div {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.navbar > div:first-child {
+    padding-left: 100px;
+}
+
+.navbar > div:hover {
+    cursor: pointer;
+}
+
+.active-bar {
+    background-color: #7aadff;
+}
+
+.popular-mode {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.all-mode {
+    margin: 0 auto;
+    max-width: 350px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #fff7a3;
+}
+
+.shop-category {
+    max-width: 350px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: #fff7a3;
+}
+
+.pets > button {
+    margin-bottom: 30px;
+    padding: 10px 15px;
+    background-color: #146eff;
+    border: 1px solid #146eff;
+    color: white;
+}
+
+.pets > button:hover {
+    cursor: pointer;
+}
