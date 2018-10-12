@@ -1,6 +1,6 @@
 <div *ngIf="isModalShown" class="add-modal">
     <div class="modal-content">
-        <p>Add new pet</p>
+        <h3>Add new pet</h3>
         <form #petForm="ngForm" (ngSubmit)="processSubmit()">
             <label for="type">Type:</label>
             <select
@@ -37,8 +37,17 @@
                 required
                 [(ngModel)]="model.price"
                 name="price"
-                placeholder="15"
+                min="0"
+                #price="ngModel"
             />
+            <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert-message">
+                    <div *ngIf="price.errors.required">
+                        Price is required.
+                    </div>
+                    <div *ngIf="price.errors.minvalue">
+                        Incorrect price
+                    </div>
+                </div>
             <br>
             <div class="name-section" [hidden]="chosenPet === 'Hamster'">
                 <label for="name">Name:</label>
@@ -47,10 +56,20 @@
                     type="text"
                     #petName
                     [required]="model.type === 'Cat' || model.type === 'Dog'"
+                    minlength="2"
                     [(ngModel)]="model.name"
                     name="name"
+                    #name="ngModel"
                     placeholder="Cute"
                 />
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert-message">
+                    <div *ngIf="name.errors.required">
+                        Name is required.
+                    </div>
+                    <div *ngIf="name.errors.minlength">
+                        Name must be at least 2 characters long.
+                    </div>
+                </div>
             </div>
             <div class="fluffy-section" [hidden]="chosenPet === 'Dog'">
                 <label for="fluffy">Fluffy:</label>

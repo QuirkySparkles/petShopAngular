@@ -10,7 +10,7 @@ import { PetModalClass } from '../pet-modal-class';
 import { Pet } from '../petClasses/Pet';
 
 @Component({
-  selector: 'add-pet-modal',
+  selector: 'app-add-pet-modal',
   templateUrl: './add-pet-modal.component.html',
   styleUrls: ['./add-pet-modal.component.css']
 })

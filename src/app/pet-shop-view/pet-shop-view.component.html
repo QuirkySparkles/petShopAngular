@@ -1,65 +1,64 @@
+<div class="header">
+    <span>Pet Shop</span>
+    <button (click)="switchModal()">Add pet +</button>
+</div>
+
 <div class="navbar">
     <div 
-        (click)="switchShowMode(true)"
-        [ngClass]="{'active-bar': isAllShown}"
+        (click)="switchShowMode('all')"
+        [ngClass]="{'active-bar': showMode === 'all'}"
     >
         All pets
     </div>
     <div
-        (click)="switchShowMode(false)"
-        [ngClass]="{'active-bar': !isAllShown}"
+        (click)="switchShowMode('cats')"
+        [ngClass]="{'active-bar': showMode === 'cats'}"
     >
-        Popular filters
+        All cats
+    </div>
+    <div
+        (click)="switchShowMode('expensive')"
+        [ngClass]="{'active-bar': showMode === 'expensive'}"
+    >
+        Expensive pets
+    </div>
+    <div
+        (click)="switchShowMode('white&fluffy')"
+        [ngClass]="{'active-bar': showMode === 'white&fluffy'}"
+    >
+        White and fluffy pets
     </div>
 </div>
-<div class="pets">
-    <button (click)="switchModal()">Add pet</button>
-    <add-pet-modal
+
+<div class="content">
+    <app-add-pet-modal
         [isModalShown]="isModalShown"
         (shutModalRequest)="switchModal()"
         (showNewPet)="onPetAddition($event)"
     >
-    </add-pet-modal>
-    <div *ngIf="isAllShown" class="all-mode">
-        <p>All pets</p>
-        <hr>
-        <p *ngFor="let pet of allPets">
-            <span>{{pet.color}} {{pet.type}} {{pet.name}} that costs {{pet.price}}$.
-                <span *ngIf="pet.isFluffy">Fluffy!</span>
-                <span *ngIf="pet.isFluffy !== undefined && !pet.isFluffy">Not fluffy :&#40;</span>
-            </span>
-        </p>
+    </app-add-pet-modal>
+    <div *ngIf="showMode === 'all'" class="shop-tab">
+       <!--  <p *ngIf="!allPets.length">There are no pets in this category</p> -->
+        <div *ngFor="let pet of allPets">
+            <app-pet-instance [pet]="pet"></app-pet-instance>
+        </div>
     </div>
-    <br>
-    <div *ngIf="!isAllShown" class="popular-mode">
-        <div class="shop-category">
-            <p>All cats</p>
-            <hr>
-            <p *ngFor="let cat of cats">
-                <span>{{cat.color}} {{cat.type}} {{cat.name}} that costs {{cat.price}}$.
-                    <span *ngIf="cat.isFluffy">Fluffy!</span>
-                    <span *ngIf="!cat.isFluffy">Not fluffy :&#40;</span>
-                </span>
-            </p>
+    <div *ngIf="showMode === 'cats'" class="shop-tab">
+        <p *ngIf="!cats.length">There are no pets in this category</p>
+        <div *ngFor="let cat of cats">
+            <app-pet-instance [pet]="cat"></app-pet-instance>
         </div>
-        <div class="shop-category">
-            <p>Expensive pets</p>
-            <hr>
-            <p *ngFor="let expensivePet of expensive">
-                <span>{{expensivePet.color}} {{expensivePet.type}} {{expensivePet.name}} that costs {{expensivePet.price}}$.
-                    <span *ngIf="expensivePet.isFluffy">Fluffy!</span>
-                    <span *ngIf="expensivePet.isFluffy !== undefined && !expensivePet.isFluffy">Not fluffy :&#40;</span>
-                </span>
-            </p>
+    </div>
+    <div *ngIf="showMode === 'expensive'" class="shop-tab">
+        <p *ngIf="!expensive.length">There are no pets in this category</p>
+        <div *ngFor="let expensivePet of expensive">
+            <app-pet-instance [pet]="expensivePet"></app-pet-instance>
         </div>
-        <div class="shop-category">
-            <p>White and fluffy pets</p>
-            <hr>
-            <p *ngFor="let fluffyWhite of whiteAndFluffy">
-                <span>{{fluffyWhite.color}} {{fluffyWhite.type}} {{fluffyWhite.name}} that costs {{fluffyWhite.price}}$.
-                    <span *ngIf="fluffyWhite.isFluffy">Fluffy!</span>
-                </span>
-            </p>
+    </div>
+    <div *ngIf="showMode === 'white&fluffy'" class="shop-tab">
+        <p *ngIf="!whiteAndFluffy.length">There are no pets in this category</p>
+        <div *ngFor="let fluffyWhite of whiteAndFluffy">
+            <app-pet-instance [pet]="fluffyWhite"></app-pet-instance>
         </div>
     </div>    
 </div>

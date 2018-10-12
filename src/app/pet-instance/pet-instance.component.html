@@ -1,0 +1,21 @@
+<div class="pet-instance">
+    <img *ngIf="pet.type === 'Cat'" src="src/icons/cat.png" alt="Cat" class="pet-icon">
+    <img *ngIf="pet.type === 'Dog'" src="src/icons/dog.png" alt="Dog" class="pet-icon">
+    <img *ngIf="pet.type === 'Hamster'" src="src/icons/hamster.png" alt="Hamster" class="pet-icon">
+    <br>
+    <span *ngIf="pet.name">Name: {{pet.name}}</span><br>
+    <span>Color: {{pet.color}}</span><br>
+    <span>Price: {{pet.price}}$</span>
+    <div
+        *ngIf="pet.type !== 'Dog'"
+        class='fluffy-ribbon'
+        [ngClass]="{'not-fluffy': !pet.isFluffy}"
+    >
+        <span *ngIf="pet.isFluffy; else notFluffy">Fluffy</span>
+       <!--  <div class="ribbon-bottom" [ngClass]="{'not-fluffy-bottom': !pet.isFluffy}"></div> -->
+    </div>
+    <div *ngIf="pet.type !== 'Dog'" class="ribbon-bottom" [ngClass]="{'not-fluffy-bottom': !pet.isFluffy}"></div>
+</div>
+
+<ng-template #notFluffy><span class="not-fluffy">Not fluffy</span></ng-template>
+

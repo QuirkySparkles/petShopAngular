@@ -2,16 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Pet } from '../petClasses/Pet';
 import { PetShopService } from '../pet-shop.service';
 import { AddPetModalComponent } from '../add-pet-modal/add-pet-modal.component';
+import { PetInstanceComponent } from '../pet-instance/pet-instance.component';
 
 @Component({
-  selector: 'pet-shop-view',
+  selector: 'app-pet-shop-view',
   templateUrl: './pet-shop-view.component.html',
   styleUrls: ['./pet-shop-view.component.css']
 })
 
 export class PetShopViewComponent implements OnInit {
     private isModalShown = false;
-    private isAllShown = true;
+    private showMode = 'all';
     private allPets: Pet[];
     private whiteAndFluffy: Pet[] = [];
     private expensive: Pet[] = [];
@@ -33,8 +34,8 @@ export class PetShopViewComponent implements OnInit {
         this.isModalShown = !this.isModalShown;
     }
 
-    switchShowMode(state: boolean): void {
-        this.isAllShown = state;
+    switchShowMode(state: string): void {
+        this.showMode = state;
     }
 
     onPetAddition(pet: Pet): void {

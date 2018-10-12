@@ -1,0 +1,64 @@
+.pet-instance {
+    position: relative;
+    width: 150px;
+    margin: 10px;
+    font-size: 12px;
+    border: 3px solid purple;
+    background-color: #fffdda;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: sans-serif;
+    word-break: break-all;
+    box-shadow: 5px 5px 5px #353535c4;
+}
+
+.pet-icon {
+    margin-top: 5px;
+    width: 80px;
+}
+
+.fluffy-ribbon {
+    width: 30px;
+    height: 20px;
+    font-size: 10px;
+    padding-top: 3px;
+    background-color: crimson;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+    position: absolute;   
+    top: 0;
+    right: 5px;
+    word-break: normal;
+}
+
+.fluffy-ribbon::after {
+    width: 30px;
+    height: 20px;
+    font-size: 10px;
+    padding-top: 3px;
+    background-color: crimson;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+    position: absolute;   
+    top: 0;
+    right: 5px;   
+}
+
+.ribbon-bottom {
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    position: absolute;
+    top: 23px;
+    right: 5px;
+    border-top: 10px solid crimson;
+}
+
+.not-fluffy-bottom {
+    margin-top: 5px;
+}
+
+.not-fluffy {
+    padding-bottom: 5px;
+}

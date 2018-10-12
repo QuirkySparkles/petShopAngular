@@ -8,12 +8,14 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { AppComponent } from './app.component';
 import { PetShopViewComponent } from './pet-shop-view/pet-shop-view.component';
 import { AddPetModalComponent } from './add-pet-modal/add-pet-modal.component';
+import { PetInstanceComponent } from './pet-instance/pet-instance.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PetShopViewComponent,
-    AddPetModalComponent
+    AddPetModalComponent,
+    PetInstanceComponent
   ],
   imports: [
     BrowserModule,
@@ -26,4 +28,5 @@ import { AddPetModalComponent } from './add-pet-modal/add-pet-modal.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

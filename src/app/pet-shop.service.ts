@@ -64,17 +64,13 @@ export class PetShopService {
     addPet(newPet: Pet): Observable<any> {  // any
         return this.http.post<Pet>(this.petsUrl, newPet, httpOptions)
             .pipe(
-                tap((addedPet: Pet) => {
-                    this.assignNewPet(addedPet);
-                }),
+                tap((addedPet: Pet) => this.assignNewPet(addedPet)),
                 catchError(this.handleError('addPet'))
             );
     }
 
     assignNewPet(newPet: Pet): void {
-        this.totalPrice += newPet.price;
-
-        // console.log(newPet instanceof Pet);
+        this.totalPrice += newPet.price; // wrong proto
 
         if (newPet.type === 'Cat') {
             this.cats.push(newPet);
