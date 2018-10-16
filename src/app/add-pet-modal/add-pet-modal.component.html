@@ -7,7 +7,7 @@
                 id="type"
                 #petType
                 required
-                (change)="changeModal($event.target.value)"
+                (change)="changeModal(petType.value)"
                 [(ngModel)]="model.type"
                 name="type"
             >
@@ -39,16 +39,16 @@
                 name="price"
                 min="0"
                 #price="ngModel"
+                appPriceValidator
             />
             <div *ngIf="price.invalid && (price.dirty || price.touched)" class="alert-message">
-                    <div *ngIf="price.errors.required">
-                        Price is required.
-                    </div>
-                    <div *ngIf="price.errors.minvalue">
-                        Incorrect price
-                    </div>
+                <div *ngIf="price.errors.required">
+                    Price is required.
                 </div>
-            <br>
+                <div *ngIf="price.errors.priceValidator && !price.errors.required">
+                    Incorrect price
+                </div>
+            </div>
             <div class="name-section" [hidden]="chosenPet === 'Hamster'">
                 <label for="name">Name:</label>
                 <input
@@ -82,7 +82,8 @@
                 />
             </div>
             <button type="submit" [disabled]="!petForm.form.valid">Submit</button>
-            <button (click)="shutModal()">Cancel</button>
+            <button (click)="shutModal()" class="cancel-button">Cancel</button>
+            <p *ngIf="isSuccessful" class="success-tip">New pet added!</p>
         </form>
     </div>
 </div>    

@@ -12,7 +12,6 @@
         [ngClass]="{'not-fluffy': !pet.isFluffy}"
     >
         <span *ngIf="pet.isFluffy; else notFluffy">Fluffy</span>
-       <!--  <div class="ribbon-bottom" [ngClass]="{'not-fluffy-bottom': !pet.isFluffy}"></div> -->
     </div>
     <div *ngIf="pet.type !== 'Dog'" class="ribbon-bottom" [ngClass]="{'not-fluffy-bottom': !pet.isFluffy}"></div>
 </div>

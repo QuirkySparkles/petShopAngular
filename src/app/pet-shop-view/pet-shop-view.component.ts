@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pet } from '../petClasses/Pet';
 import { PetShopService } from '../pet-shop.service';
-import { AddPetModalComponent } from '../add-pet-modal/add-pet-modal.component';
-import { PetInstanceComponent } from '../pet-instance/pet-instance.component';
 
 @Component({
   selector: 'app-pet-shop-view',
@@ -20,10 +18,14 @@ export class PetShopViewComponent implements OnInit {
 
     constructor(private petShopService: PetShopService) { }
 
+    ngOnInit() {
+        this.getAllPets();
+    }
+
     getAllPets(): void {
         this.petShopService.getAllPets()
-            .subscribe(pet => {
-                this.allPets = pet;
+            .subscribe(shopPets => {
+                this.allPets = shopPets;
                 this.whiteAndFluffy = this.petShopService.whiteFluffyPets;
                 this.expensive = this.petShopService.expensivePets;
                 this.cats = this.petShopService.allCats;
@@ -38,15 +40,8 @@ export class PetShopViewComponent implements OnInit {
         this.showMode = state;
     }
 
-    onPetAddition(pet: Pet): void {
-        // this.allPets.push(pet);  //double push
-        this.whiteAndFluffy = this.petShopService.whiteFluffyPets;
+    // fetch only expensive pets because of full recalculating of that array
+    onPetAddition(): void {
         this.expensive = this.petShopService.expensivePets;
-        this.cats = this.petShopService.allCats;
     }
-
-    ngOnInit() {
-        this.getAllPets();
-    }
-
 }

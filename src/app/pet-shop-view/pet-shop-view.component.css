@@ -7,7 +7,7 @@
     font-family: sans-serif;
     color: white;
     background-image: linear-gradient(#eb0f96, #e654ae);
-    border-bottom: 5px solid #d81ab8;
+    border-bottom: 3px solid #d81ab8;
 }
 
  .header span {
@@ -21,18 +21,21 @@ b {
 .navbar {
     display: flex;
     justify-content: center;
-    background-color: #c4daff;
+    background-color: #d543da;
     margin-bottom: 10px;
-    border-bottom: 5px solid #931fff;
+    border-bottom: 3px solid #931fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.404);
 }
 
 .navbar > div {
     transition: 0.5s;
     width: 25%;
     max-width: 150px;
-    border-left: 1px solid #458cfd;
-    border-right: 1px solid #458cfd;
+    border-left: 1px solid #931fff;;
+    border-right: 1px solid #931fff;;
     font-size: 15px;
+    font-weight: bold;
+    color: white;
     padding: 10px;
     font-family: sans-serif;
 }
@@ -43,7 +46,7 @@ b {
 
 .active-bar {
     transition: 0.5s;
-    background-color: #7aadff;
+    background-color: #931fff;
 }
 
 .shop-tab {
@@ -56,6 +59,7 @@ b {
 
 .header > button {
     transition: 0.5s;
+    font-weight: bold;
     padding: 10px 15px;
     background-color: #ec219f;
     border: 1px solid #ff0099;
@@ -71,5 +75,10 @@ b {
 
 .header > button:active {
     background-color: #c91885;
+    border-color: #d45fa7;
     cursor: pointer;
+}
+
+.content {
+    padding-bottom: 50px;
 }
